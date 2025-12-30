@@ -3,121 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JBC Taiwan 風格官網 | 您的公司名稱</title>
+    <title>卓越機器人科技 | 專業自動化解決方案</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        html { scroll-behavior: smooth; }
-        .navy-bg { background-color: #002D58; } /* JBC 企業藍 */
-        .navy-text { color: #002D58; }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        
+        .navy-dark { background-color: #001529; }
+        .navy-accent { color: #1890ff; }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0, 21, 41, 0.9) 30%, rgba(0, 21, 41, 0.2) 100%);
+        }
+
+        /* 懸浮按鈕動畫 */
+        .float-btn {
+            transition: all 0.3s ease;
+            writing-mode: vertical-rl; /* 文字直向，模仿某些專業導覽感，若想橫向可刪除此行 */
+            text-orientation: mixed;
+        }
+        .float-btn:hover {
+            transform: translateX(-10px);
+            background-color: #1890ff;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-white text-gray-900">
 
-    <nav class="fixed w-full z-50 bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold navy-text tracking-tighter">COMPANY LOGO</div>
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#home" class="hover:text-blue-600 transition">首頁</a>
-                <a href="#about" class="hover:text-blue-600 transition">關於我們</a>
-                <a href="#services" class="hover:text-blue-600 transition">專業服務</a>
-                <a href="#partners" class="hover:text-blue-600 transition">合作夥伴</a>
-                <a href="#contact" class="hover:text-blue-600 transition">聯絡我們</a>
+    <div class="fixed right-0 top-1/2 transform -translate-y-1/2 z-[100] flex flex-col space-y-2">
+        <a href="#" class="float-btn bg-blue-800 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">前往報名</a>
+        <a href="#" class="float-btn bg-slate-700 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">題庫專區</a>
+        <a href="#" class="float-btn bg-slate-700 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">活動簡章</a>
+        <a href="#" class="float-btn bg-blue-900 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">匯款完成表單</a>
+        <a href="#" class="float-btn bg-green-600 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">加入群組</a>
+    </div>
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 navy-dark rounded-sm flex items-center justify-center">
+                    <span class="text-white font-bold text-xs text-white">RT</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-slate-800">ROBOT TECH</span>
+            </div>
+            <div class="hidden md:flex space-x-10 text-sm font-medium tracking-widest text-gray-600 uppercase">
+                <span>Technology</span>
+                <span>Specifications</span>
+                <span>About</span>
+                <span>Contact</span>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="relative h-[80vh] flex items-center justify-center bg-gray-900 text-white pt-16">
-        <div class="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"></div>
-        <div class="relative z-10 text-center px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">卓越技術，在地服務</h1>
-            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-200">
-                承襲 JBC 專業精神，我們致力於為台灣企業提供最頂尖的解決方案與售後支持。
-            </p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#services" class="navy-bg text-white px-8 py-3 rounded shadow-lg hover:bg-blue-800 transition">我們的服務</a>
-                <a href="#contact" class="bg-white text-navy-bg px-8 py-3 rounded shadow-lg hover:bg-gray-100 transition font-bold">聯絡我們</a>
-            </div>
+    <section class="relative h-screen min-h-[700px] flex items-center overflow-hidden navy-dark">
+        <div class="absolute inset-0 z-0">
+            <img src="hero-robot.png" alt="High-tech Robot Lab" class="w-full h-full object-cover object-right md:object-center">
+            <div class="absolute inset-0 hero-gradient"></div>
         </div>
-    </section>
 
-    <section id="about" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-blue-600 font-bold tracking-widest uppercase mb-2">About Us</h2>
-                <h3 class="text-3xl font-bold mb-6 navy-text text-3xl">關於我們</h3>
-                <p class="text-gray-600 leading-loose text-lg mb-6">
-                    我們深耕台灣多年，以客戶需求為導向，提供最完善的設備維護與技術諮詢。如同 JBC 的理念，品質是我們唯一的堅持。
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full text-white">
+            <div class="max-w-2xl">
+                <div class="inline-block px-3 py-1 border border-blue-400 text-blue-400 text-xs tracking-widest mb-6 uppercase">
+                    Advanced Robotics Laboratory
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    精密積木機器人<br><span class="text-blue-500">專業技術支援</span>
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed">
+                    以高科技實驗室為核心，打造頂尖自動化教育方案。<br>透過專業對話，串聯每一份科技創新的可能。
                 </p>
-                <div class="grid grid-cols-2 gap-4 border-t pt-8">
-                    <div><p class="text-2xl font-bold navy-text">10+</p><p class="text-gray-500">專業經驗</p></div>
-                    <div><p class="text-2xl font-bold navy-text">100+</p><p class="text-gray-500">滿意客戶</p></div>
-                </div>
-            </div>
-            <div class="bg-gray-100 p-4 rounded shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" class="rounded shadow">
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold navy-text">專業服務範疇</h2>
-                <div class="w-16 h-1 navy-bg mx-auto mt-4"></div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white border-t-4 border-blue-600 p-8 shadow-md hover:shadow-xl transition">
-                    <h4 class="text-xl font-bold mb-4">精密設備維修</h4>
-                    <p class="text-gray-600 italic">提供原廠級別的維護與零件更換服務。</p>
-                </div>
-                <div class="bg-white border-t-4 border-blue-600 p-8 shadow-md hover:shadow-xl transition">
-                    <h4 class="text-xl font-bold mb-4">技術人才培訓</h4>
-                    <p class="text-gray-600 italic">針對操作人員進行專業考核與操作指導。</p>
-                </div>
-                <div class="bg-white border-t-4 border-blue-600 p-8 shadow-md hover:shadow-xl transition">
-                    <h4 class="text-xl font-bold mb-4">客製化方案</h4>
-                    <p class="text-gray-600 italic">根據您的產線需求，規劃最高效率的運作流程。</p>
+                <div class="flex space-x-4">
+                    <div class="px-10 py-4 bg-blue-600 text-white font-bold rounded-sm shadow-2xl hover:bg-blue-700 transition cursor-pointer">技術白皮書</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="partners" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold navy-text mb-12">合作夥伴</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div class="p-8 bg-gray-50 rounded-lg hover:bg-white hover:shadow-lg transition">
-                    <img src="panda1.jpg" alt="Partner 1" class="h-24 mx-auto object-contain">
-                </div>
-                <div class="p-8 bg-gray-50 rounded-lg hover:bg-white hover:shadow-lg transition">
-                    <img src="panda2.jpg" alt="Partner 2" class="h-24 mx-auto object-contain">
-                </div>
-                <div class="p-8 bg-gray-50 rounded-lg hover:bg-white hover:shadow-lg transition">
-                    <img src="panda3.jpg" alt="Partner 3" class="h-24 mx-auto object-contain">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 navy-bg text-white text-center">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-4">有任何需求？歡迎聯繫我們</h2>
-            <p class="mb-12 opacity-80">我們將由專人於 24 小時內與您聯繫</p>
-            <div class="flex flex-col md:flex-row gap-8 justify-center text-left">
-                <div class="flex items-center space-x-4">
-                    <span class="text-3xl">📍</span>
-                    <p>台灣台北市某區某路 123 號</p>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <span class="text-3xl">📞</span>
-                    <p>02-1234-5678</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-100 py-8 text-center border-t">
-        <p class="text-gray-500">&copy; 2025 積動城市 版權所有</p>
+    <footer class="bg-white py-10 border-t border-gray-100 text-center text-gray-400 text-xs tracking-tighter">
+        <p>© 2025 ROBOT TECH TAIWAN. ALL RIGHTS RESERVED.</p>
     </footer>
 
 </body>
