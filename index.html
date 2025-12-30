@@ -24,9 +24,10 @@
             letter-spacing: 0.1em;
         }
 
-        /* LOGO 修正：將黑色字體變為白色，並保持機器人紅色 */
-        .logo-fix {
-            filter: brightness(5) contrast(1.2) drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+        /* LOGO 修正：移除顏色干擾，保留原色並增加紫色發光邊框 */
+        .logo-original-glow {
+            /* 移除 brightness 與 contrast，僅保留紫色發光 */
+            filter: drop-shadow(0 0 8px #bf00ff) drop-shadow(0 0 2px #bf00ff);
             transition: all 0.3s ease;
         }
 
@@ -43,7 +44,7 @@
         .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-menu {
             display: none;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 30, 60, 0.95); /* 海洋藍色系 */
             border: 1px solid #bf00ff;
             box-shadow: 0 0 15px rgba(191, 0, 255, 0.3);
             position: absolute;
@@ -53,7 +54,7 @@
             z-index: 200;
         }
 
-        /* 右側懸浮按鈕：優化間距與層級 */
+        /* 右側懸浮按鈕 */
         .float-container {
             position: fixed;
             right: 0;
@@ -77,24 +78,28 @@
         .btn-black { background: #1a1a1a; border: 1px solid #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.3); }
         .float-btn:hover { transform: translateX(-10px); box-shadow: 0 0 20px currentColor; }
 
-        /* 左下角 JBC 標記 */
-        .jbc-corner-mark {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 50;
-            opacity: 0.5;
-            pointer-events: none;
-            border-left: 2px solid #bf00ff;
-            padding-left: 10px;
+        /* 首頁底圖完整顯示處理 */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: #000;
+        }
+        .hero-img-full {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 確保整張圖片顯示，不裁切 */
+            z-index: 0;
         }
 
-        /* 首頁底圖漸層遮罩 - 確保標題清晰 */
         .hero-overlay {
-            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.2) 100%);
+            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
         }
         
-        section { padding-top: 140px; padding-bottom: 80px; min-height: 80vh; }
+        section { padding-top: 100px; padding-bottom: 80px; }
     </style>
 </head>
 <body>
@@ -107,15 +112,10 @@
         <a href="#" class="float-btn btn-gold rounded-l-lg">加入群組</a>
     </div>
 
-    <div class="jbc-corner-mark">
-        <div class="font-bold text-lg tracking-tighter text-white" style="font-family: 'Orbitron';">JBC TAIWAN</div>
-        <div class="text-[9px] text-yellow-500 tracking-[0.2em] font-bold">OFFICIAL CHALLENGE</div>
-    </div>
-
-    <nav class="fixed w-full z-[1100] bg-black/95 backdrop-blur-md border-b border-purple-900/50">
+    <nav class="fixed w-full z-[1100] bg-blue-950/90 backdrop-blur-md border-b border-blue-800/50 shadow-lg shadow-blue-900/20">
         <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
             <div class="flex items-center space-x-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-                <img src="jbc-logo.png" alt="Logo" class="h-16 w-auto logo-fix">
+                <img src="jbc-logo.png" alt="Logo" class="h-16 w-auto logo-original-glow">
                 <span class="text-xl font-bold tracking-tight text-white uppercase ml-2">Junior Botball Taiwan</span>
             </div>
             
@@ -128,38 +128,38 @@
                 <div class="relative dropdown">
                     <span class="nav-link">各年度比賽 ▼</span>
                     <div class="dropdown-menu mt-2 py-2">
-                        <a href="#" class="block px-4 py-3 text-xs hover:bg-purple-900/50 transition">2024 年度比賽</a>
-                        <a href="#" class="block px-4 py-3 text-xs hover:bg-purple-900/50 transition border-t border-purple-900/30">2025 年度比賽</a>
+                        <a href="#" class="block px-4 py-3 text-xs hover:bg-blue-800/50 transition">2024 年度比賽</a>
+                        <a href="#" class="block px-4 py-3 text-xs hover:bg-blue-800/50 transition border-t border-blue-900/30">2025 年度比賽</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="relative min-h-screen flex items-center overflow-hidden p-0">
-        <div class="absolute inset-0 z-0 bg-black">
-            <img src="unnamed.jpg" alt="Background" class="w-full h-full object-cover object-center opacity-80">
+    <section id="home" class="hero-section p-0 overflow-hidden">
+        <div class="absolute inset-0 flex items-center justify-center bg-black">
+            <img src="unnamed.jpg" alt="Background" class="hero-img-full">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 w-full pt-20">
-            <div class="max-w-2xl">
-                <h1 class="text-5xl md:text-8xl font-bold mb-6 neon-purple tracking-tighter leading-tight">
+            <div class="max-w-2xl bg-black/40 p-6 rounded-lg backdrop-blur-sm">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 neon-purple tracking-tighter leading-tight">
                     Junior<br>Botball Challenge
                 </h1>
                 <div class="mt-8 space-y-4">
                     <p class="text-2xl md:text-3xl font-bold gold-text uppercase">2026 STEM 科技教育競賽</p>
-                    <p class="text-lg md:text-xl text-purple-200 font-light italic">讓台灣的科技教育與國際接軌</p>
+                    <p class="text-lg md:text-xl text-blue-200 font-light italic">讓台灣的科技教育與國際接軌</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="news" class="bg-[#050010] border-t border-purple-900/20">
+    <section id="news" class="bg-[#020510] border-t border-blue-900/20">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-bold neon-purple mb-12">活動公告 / NEWS</h2>
             <div class="grid gap-6">
-                <div class="bg-white/5 border-l-4 border-purple-600 p-8 hover:bg-white/10 transition">
+                <div class="bg-blue-900/10 border-l-4 border-purple-600 p-8 hover:bg-blue-900/20 transition">
                     <p class="text-gold-500 mb-2 font-bold">2025.12.30</p>
                     <h3 class="text-2xl font-bold text-white">2026 台中站競賽規程初步架構發佈</h3>
                     <p class="text-gray-400 mt-4 leading-relaxed">正式內容即將更新，包含最新積木規格與場地任務圖，敬請各隊伍密切留意網站動態。</p>
@@ -172,7 +172,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-bold neon-purple mb-12">競賽規則 / RULES</h2>
             <div class="grid md:grid-cols-2 gap-10">
-                <div class="border border-purple-900/50 p-8 rounded-xl bg-gradient-to-b from-purple-900/10 to-transparent">
+                <div class="border border-blue-900/50 p-8 rounded-xl bg-gradient-to-b from-blue-900/20 to-transparent">
                     <h4 class="text-xl text-gold-500 font-bold mb-4 uppercase">基本組建準則</h4>
                     <p class="text-gray-400 leading-relaxed text-sm">
                         • 機器人必須使用指定模組化積木組建。<br>
@@ -180,7 +180,7 @@
                         • 場地尺寸與任務點分佈將於簡章內詳述。
                     </p>
                 </div>
-                <div class="border border-purple-900/50 p-8 rounded-xl">
+                <div class="border border-blue-900/50 p-8 rounded-xl">
                     <h4 class="text-xl text-gold-500 font-bold mb-4 uppercase">賽場計分方式</h4>
                     <p class="text-gray-400 leading-relaxed text-sm">
                         • 任務得分：根據完成之自動化任務分值加總。<br>
@@ -192,20 +192,20 @@
         </div>
     </section>
 
-    <section id="register" class="bg-[#050010] text-center">
+    <section id="register" class="bg-[#020510] text-center">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-bold neon-purple mb-12">報名資訊 / REGISTER</h2>
-            <div class="p-12 border-2 border-dashed border-purple-900/50 rounded-2xl bg-black/50">
+            <div class="p-12 border-2 border-dashed border-blue-900/50 rounded-2xl bg-black/50">
                 <p class="text-gray-400 mb-8 text-lg">報名系統即將於 2026 年初正式開放。</p>
-                <div class="inline-block px-12 py-5 bg-gradient-to-r from-purple-700 to-purple-900 font-bold text-white rounded-sm shadow-[0_0_20px_rgba(191,0,255,0.6)] cursor-not-allowed">
+                <div class="inline-block px-12 py-5 bg-gradient-to-r from-blue-700 to-purple-700 font-bold text-white rounded-sm shadow-[0_0_20px_rgba(191,0,255,0.6)] cursor-not-allowed">
                     COMING SOON
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black py-16 border-t border-purple-900/30 text-center">
-        <img src="jbc-logo.png" alt="Logo" class="h-16 w-auto mx-auto logo-fix mb-6">
+    <footer class="bg-black py-16 border-t border-blue-900/30 text-center">
+        <img src="jbc-logo.png" alt="Logo" class="h-16 w-auto mx-auto logo-original-glow mb-6">
         <p class="text-gray-600 text-xs tracking-[0.3em] uppercase">© 2025 JUNIOR BOTBALL TAIWAN. ALL RIGHTS RESERVED.</p>
     </footer>
 
@@ -213,7 +213,7 @@
         function scrollToSection(id) {
             const element = document.getElementById(id);
             if (element) {
-                const navHeight = 90; 
+                const navHeight = 80; 
                 window.scrollTo({
                     top: element.offsetTop - navHeight,
                     behavior: 'smooth'
