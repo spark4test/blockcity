@@ -3,27 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>卓越機器人科技 | 專業自動化解決方案</title>
+    <title>Junior Botball Challenge | 2026 台中站</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
-        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Orbitron:wght@700&display=swap');
         
+        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
         .navy-dark { background-color: #001529; }
-        .navy-accent { color: #1890ff; }
-        .hero-gradient {
-            background: linear-gradient(to right, rgba(0, 21, 41, 0.9) 30%, rgba(0, 21, 41, 0.2) 100%);
+        
+        /* 淺藍色霓虹燈字體效果 */
+        .neon-text {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #00d2ff,
+                0 0 30px #00d2ff,
+                0 0 40px #00d2ff;
         }
 
-        /* 懸浮按鈕動畫 */
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0, 21, 41, 0.95) 20%, rgba(0, 21, 41, 0.4) 100%);
+        }
+
         .float-btn {
             transition: all 0.3s ease;
-            writing-mode: vertical-rl; /* 文字直向，模仿某些專業導覽感，若想橫向可刪除此行 */
+            writing-mode: vertical-rl;
             text-orientation: mixed;
         }
         .float-btn:hover {
             transform: translateX(-10px);
-            background-color: #1890ff;
+            background-color: #00d2ff;
+        }
+
+        /* 資訊小標籤樣式 */
+        .info-tag {
+            background: rgba(24, 144, 255, 0.15);
+            border-left: 3px solid #1890ff;
+            padding: 8px 15px;
         }
     </style>
 </head>
@@ -40,46 +58,65 @@
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 navy-dark rounded-sm flex items-center justify-center">
-                    <span class="text-white font-bold text-xs text-white">RT</span>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-slate-800">ROBOT TECH</span>
+                <div class="w-8 h-8 navy-dark rounded-sm flex items-center justify-center font-bold text-white text-xs">JBC</div>
+                <span class="text-xl font-bold tracking-tight text-slate-800 uppercase">Botball Taiwan</span>
             </div>
             <div class="hidden md:flex space-x-10 text-sm font-medium tracking-widest text-gray-600 uppercase">
-                <span>Technology</span>
-                <span>Specifications</span>
-                <span>About</span>
-                <span>Contact</span>
+                <span>活動公告</span>
+                <span>競賽規則</span>
+                <span>報名資訊</span>
+                <span>歷屆回顧</span>
             </div>
         </div>
     </nav>
 
-    <section class="relative h-screen min-h-[700px] flex items-center overflow-hidden navy-dark">
+    <section class="relative h-screen min-h-[750px] flex items-center overflow-hidden navy-dark">
         <div class="absolute inset-0 z-0">
             <img src="hero-robot.png" alt="High-tech Robot Lab" class="w-full h-full object-cover object-right md:object-center">
             <div class="absolute inset-0 hero-gradient"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 w-full text-white">
-            <div class="max-w-2xl">
-                <div class="inline-block px-3 py-1 border border-blue-400 text-blue-400 text-xs tracking-widest mb-6 uppercase">
-                    Advanced Robotics Laboratory
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                    精密積木機器人<br><span class="text-blue-500">專業技術支援</span>
+            <div class="max-w-4xl">
+                <h1 class="text-5xl md:text-8xl font-bold mb-4 neon-text tracking-tighter">
+                    Junior Botball Challenge
                 </h1>
-                <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed">
-                    以高科技實驗室為核心，打造頂尖自動化教育方案。<br>透過專業對話，串聯每一份科技創新的可能。
-                </p>
-                <div class="flex space-x-4">
-                    <div class="px-10 py-4 bg-blue-600 text-white font-bold rounded-sm shadow-2xl hover:bg-blue-700 transition cursor-pointer">技術白皮書</div>
+                
+                <div class="mt-6 space-y-4">
+                    <p class="text-xl md:text-2xl font-bold text-blue-300 tracking-widest">
+                        2026 STEM 科技教育競賽
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-6">
+                        暨 Botball 國際教育機器人大會 JBC 開放挑戰 - 台中站
+                    </p>
+
+                    <div class="space-y-3 mt-8">
+                        <div class="info-tag inline-block mr-4">
+                            <span class="text-blue-400 mr-2">📅</span>
+                            <span class="text-white font-medium">2026年5月20日 (星期三)</span>
+                        </div>
+                        <br class="md:hidden">
+                        <div class="info-tag inline-block">
+                            <span class="text-blue-400 mr-2">📍</span>
+                            <span class="text-white font-medium">僑光科技大學 圖資大樓4樓語言中心</span>
+                        </div>
+                        <p class="text-sm text-gray-400 ml-1 mt-1 font-light tracking-wide">
+                            (台中市西屯區僑光路100號)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <div class="inline-block px-10 py-4 border-2 border-blue-400 text-blue-400 font-bold rounded-sm shadow-[0_0_15px_rgba(0,210,255,0.4)] hover:bg-blue-400 hover:text-white transition duration-500 cursor-pointer">
+                        活動詳細資訊
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white py-10 border-t border-gray-100 text-center text-gray-400 text-xs tracking-tighter">
-        <p>© 2025 ROBOT TECH TAIWAN. ALL RIGHTS RESERVED.</p>
+    <footer class="bg-white py-10 border-t border-gray-100 text-center text-gray-400 text-xs tracking-widest uppercase">
+        <p>© 2025 JUNIOR BOTBALL CHALLENGE TAIWAN. ALL RIGHTS RESERVED.</p>
     </footer>
 
 </body>
