@@ -24,25 +24,18 @@
             letter-spacing: 0.1em;
         }
 
-        /* Logo 融合發光效果 */
-        .logo-glow {
-            filter: drop-shadow(0 0 8px rgba(191, 0, 255, 0.6));
-            transition: all 0.3s ease;
-        }
-        .logo-glow:hover {
-            filter: drop-shadow(0 0 15px rgba(191, 0, 255, 0.9)) brightness(1.2);
-        }
-
+        /* 導覽列文字發光 */
         .nav-link {
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
         }
         .nav-link:hover {
             color: #bf00ff;
             text-shadow: 0 0 8px #bf00ff, 0 0 15px #bf00ff;
         }
 
-        /* 下拉選單 */
+        /* 下拉選單樣式 */
         .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-menu {
             display: none;
@@ -56,17 +49,18 @@
             z-index: 200;
         }
 
-        /* 右側懸浮按鈕 */
+        /* 右側懸浮按鈕 - 修正遮擋問題 */
         .float-container {
             position: fixed;
             right: 0;
-            top: 60%;
+            top: 60%; /* 下移位置，避免與導覽列衝突 */
             transform: translateY(-50%);
-            z-index: 999;
+            z-index: 999; /* 確保在最上層 */
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
+
         .float-btn {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             writing-mode: vertical-rl;
@@ -75,17 +69,19 @@
         .btn-purple { background: #2d004d; border: 1px solid #bf00ff; box-shadow: 0 0 10px #bf00ff; }
         .btn-gold { background: #4d4500; border: 1px solid #FFD700; box-shadow: 0 0 10px #FFD700; color: #FFD700; }
         .btn-black { background: #1a1a1a; border: 1px solid #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.3); }
+
         .float-btn:hover { transform: translateX(-15px); box-shadow: 0 0 20px currentColor; }
 
-        /* 右下角 Logo 浮水印 (完美融合位子) */
-        .jbc-logo-fixed {
+        /* 左下角 JBC 專屬標誌 */
+        .jbc-watermark {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            left: 20px;
             z-index: 50;
-            opacity: 0.7;
-            width: 120px;
-            pointer-events: none;
+            opacity: 0.6;
+            pointer-events: none; /* 不影響點擊 */
+            border-left: 2px solid #bf00ff;
+            padding-left: 10px;
         }
 
         .hero-overlay {
@@ -105,13 +101,16 @@
         <a href="#" class="float-btn btn-gold px-3 py-6 rounded-l-lg text-sm font-bold tracking-widest">加入群組</a>
     </div>
 
-    <img src="jbc-logo.png" alt="JBC Official" class="jbc-logo-fixed logo-glow">
+    <div class="jbc-watermark">
+        <div class="font-bold text-2xl tracking-tighter neon-purple" style="font-family: 'Orbitron'; font-size: 1.2rem;">JUNIOR BOTBALL</div>
+        <div class="text-[10px] text-gold-500 tracking-[0.2em] font-bold">CHALLENGE TAIWAN</div>
+    </div>
 
     <nav class="fixed w-full z-[110] bg-black/90 backdrop-blur-md border-b border-purple-900/50">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-                <img src="jbc-logo.png" alt="Logo" class="h-10 w-auto logo-glow">
-                <span class="text-xl font-bold tracking-tight text-white uppercase ml-2">Junior Botball Taiwan</span>
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="w-8 h-8 bg-gradient-to-br from-purple-600 to-yellow-500 rounded-sm flex items-center justify-center font-bold text-white text-[10px]">JBC</div>
+                <span class="text-xl font-bold tracking-tight text-white uppercase">Junior Botball Taiwan</span>
             </div>
             
             <div class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase items-center">
@@ -139,10 +138,9 @@
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
             <div class="max-w-2xl">
-                <h1 class="text-5xl md:text-8xl font-bold mb-6 neon-purple tracking-tighter leading-tight pt-10">
+                <h1 class="text-5xl md:text-8xl font-bold mb-6 neon-purple tracking-tighter leading-tight">
                     Junior<br>Botball Challenge
                 </h1>
-                
                 <div class="mt-8 space-y-4">
                     <p class="text-2xl md:text-3xl font-bold gold-text uppercase">2026 STEM 科技教育競賽</p>
                     <p class="text-lg md:text-xl text-purple-200 font-light">暨 Botball 國際教育機器人大會 JBC 開放挑戰 - 台中站</p>
