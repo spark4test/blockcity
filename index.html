@@ -28,6 +28,7 @@
         .nav-link {
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
         }
         .nav-link:hover {
             color: #bf00ff;
@@ -35,14 +36,17 @@
         }
 
         /* 下拉選單樣式 */
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
+        .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-menu {
             display: none;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             border: 1px solid #bf00ff;
             box-shadow: 0 0 15px rgba(191, 0, 255, 0.3);
+            position: absolute;
+            right: 0;
+            top: 100%;
+            width: 160px;
+            z-index: 110;
         }
 
         /* 側邊欄按鍵 */
@@ -50,6 +54,7 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             writing-mode: vertical-rl;
             text-orientation: mixed;
+            z-index: 100;
         }
         .btn-purple { background: #2d004d; border: 1px solid #bf00ff; box-shadow: 0 0 10px #bf00ff; }
         .btn-gold { background: #4d4500; border: 1px solid #FFD700; box-shadow: 0 0 10px #FFD700; color: #FFD700; }
@@ -61,7 +66,7 @@
             background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 100%);
         }
         
-        section { padding-top: 100px; padding-bottom: 100px; }
+        section { padding-top: 120px; padding-bottom: 100px; min-height: 60vh; }
     </style>
 </head>
 <body>
@@ -74,22 +79,22 @@
         <a href="#" class="float-btn btn-gold px-3 py-6 rounded-l-lg text-sm font-bold tracking-widest">加入群組</a>
     </div>
 
-    <nav class="fixed w-full z-[100] bg-black/90 backdrop-blur-md border-b border-purple-900/50">
+    <nav class="fixed w-full z-[110] bg-black/90 backdrop-blur-md border-b border-purple-900/50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
                 <div class="w-8 h-8 bg-gradient-to-br from-purple-600 to-yellow-500 rounded-sm flex items-center justify-center font-bold text-white text-[10px]">JBC</div>
                 <span class="text-xl font-bold tracking-tight text-white uppercase">Junior Botball Taiwan</span>
             </div>
             
-            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase">
-                <a href="#home" class="nav-link">首頁</a>
-                <a href="#news" class="nav-link">活動公告</a>
-                <a href="#rules" class="nav-link">競賽規則</a>
-                <a href="#register" class="nav-link">報名資訊</a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase items-center">
+                <a onclick="scrollToSection('home')" class="nav-link">首頁</a>
+                <a onclick="scrollToSection('news')" class="nav-link">活動公告</a>
+                <a onclick="scrollToSection('rules')" class="nav-link">競賽規則</a>
+                <a onclick="scrollToSection('register')" class="nav-link">報名資訊</a>
                 
                 <div class="relative dropdown">
                     <span class="nav-link">各年度比賽 ▼</span>
-                    <div class="absolute right-0 mt-2 w-40 rounded-md dropdown-menu">
+                    <div class="dropdown-menu mt-2 py-2">
                         <a href="#" class="block px-4 py-3 text-xs hover:bg-purple-900/50 transition">2024 年度比賽</a>
                         <a href="#" class="block px-4 py-3 text-xs hover:bg-purple-900/50 transition border-t border-purple-900/30">2025 年度比賽</a>
                     </div>
@@ -104,9 +109,9 @@
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full pt-20">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
             <div class="max-w-2xl">
-                <h1 class="text-5xl md:text-8xl font-bold mb-6 neon-purple tracking-tighter">
+                <h1 class="text-5xl md:text-8xl font-bold mb-6 neon-purple tracking-tighter leading-tight">
                     Junior<br>Botball Challenge
                 </h1>
                 
@@ -132,10 +137,13 @@
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-3xl font-bold neon-purple mb-12">活動公告 / Latest News</h2>
             <div class="grid gap-6">
-                <div class="bg-white/5 border border-purple-900/30 p-6 hover:bg-purple-900/10 transition">
-                    <span class="text-gold-500 text-sm">2025.12.30</span>
-                    <h3 class="text-xl font-bold mt-2">2026 台中站競賽規程正式發佈</h3>
-                    <p class="text-gray-400 mt-2 text-sm">請各參賽隊伍至簡章專區下載最新版本規程...</p>
+                <div class="bg-white/5 border border-purple-900/30 p-8 hover:bg-purple-900/10 transition group">
+                    <span class="text-gold-500 text-sm tracking-widest">2025.12.30 UPDATE</span>
+                    <h3 class="text-2xl font-bold mt-2 text-white group-hover:text-purple-400 transition">2026 台中站競賽規程正式發佈</h3>
+                    <p class="text-gray-400 mt-4 leading-relaxed">
+                        本屆 Junior Botball Challenge 針對積木機器人的自動化路徑規劃新增了挑戰項目，請各隊伍點擊下方連結下載最新規範。
+                    </p>
+                    <div class="mt-6 text-purple-500 font-bold cursor-pointer">READ MORE →</div>
                 </div>
             </div>
         </div>
@@ -143,4 +151,63 @@
 
     <section id="rules" class="bg-black">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font
+            <h2 class="text-3xl font-bold neon-purple mb-12">競賽規則 / Competition Rules</h2>
+            <div class="grid md:grid-cols-2 gap-12 text-gray-300">
+                <div class="bg-[#0a0a0a] p-8 rounded-lg border-t-2 border-purple-600">
+                    <h4 class="text-xl text-white font-bold mb-6 uppercase tracking-widest">基本組建準則</h4>
+                    <ul class="space-y-4 text-sm list-disc list-inside">
+                        <li>僅限使用指定模組化積木與感測器</li>
+                        <li>機器人最大尺寸限制：25cm x 25cm x 25cm</li>
+                        <li>所有動力來源必須為內置電池，禁止外接電源</li>
+                    </ul>
+                </div>
+                <div class="bg-[#0a0a0a] p-8 rounded-lg border-t-2 border-gold-500">
+                    <h4 class="text-xl text-white font-bold mb-6 uppercase tracking-widest">賽程與評分</h4>
+                    <ul class="space-y-4 text-sm list-disc list-inside">
+                        <li>自動化任務挑戰 (70%)：於三分鐘內完成地圖任務</li>
+                        <li>創意設計與解說 (30%)：評審團技術面試</li>
+                        <li>若出現同分，則以任務完成時間較短者獲勝</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="bg-[#05000a] text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-bold neon-purple mb-6">報名資訊 / Registration</h2>
+            <p class="text-gray-400 mb-12 text-lg leading-relaxed font-light">
+                挑戰未來，從這裡開始。<br>我們邀請所有對機器人與編程充滿熱情的青年學子，組隊站上國際舞台。
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <div class="px-10 py-5 bg-gradient-to-r from-purple-700 to-purple-900 font-bold text-white rounded-sm shadow-[0_0_20px_#bf00ff] cursor-pointer hover:scale-105 hover:shadow-[0_0_35px_#bf00ff] transition-all">
+                    個人/隊伍報名入口
+                </div>
+                <div class="px-10 py-5 border-2 border-gold-500 text-gold-500 font-bold rounded-sm hover:bg-gold-500 hover:text-black transition-all cursor-pointer">
+                    下載報名表單檔案
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 border-t border-purple-900/30 text-center">
+        <p class="text-gray-600 text-[10px] tracking-[0.3em] uppercase">© 2025 JUNIOR BOTBALL TAIWAN. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                const navHeight = 80;
+                const position = element.offsetTop - navHeight;
+                window.scrollTo({
+                    top: position,
+                    behavior: 'smooth'
+                });
+                // 更新網址但不加 # 字號
+                window.history.pushState("", "", "/");
+            }
+        }
+    </script>
+</body>
+</html>
